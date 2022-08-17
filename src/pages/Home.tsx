@@ -29,10 +29,12 @@ export function Home (): JSX.Element {
         }).then(()=>navigate("/event")) //após inscrição é encaminhado para página dos vídeos
     }
 
+    let screenSizeWidth = window.innerWidth
+
     return (
         <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-            <div className="w-full max-w-[1200px] flex items-center justify-between mt-20 ">
-                <div className="max-w-[640px]">
+            <div className={`w-full max-w-[1200px] flex items-center justify-between mt-20 ${screenSizeWidth < 560 ? "flex flex-col items-center" : ""}`}>
+                <div className={`max-w-[640px] ${screenSizeWidth < 560 ? "flex flex-col items-center justify-center text-center" : ""}`}>
                     <Logo />
 
                     <h1 className="mt-8 text-[40px] leading-tight">
@@ -43,7 +45,7 @@ export function Home (): JSX.Element {
                     </p>
                 </div>
 
-                <div className="p-8 bg-gray-700 border border-gray-500 rounded">
+                <div className={`p-8 mt-3 bg-gray-700 border border-gray-500 rounded ${screenSizeWidth < 560 ? "h-[300px] items-center block" : ""}`}>
                     <strong className="text-2xl mb-6 block">Inscreva-se gratuitamente</strong>
 
                     <form onSubmit={handleSubscriber} className="flex flex-col gap-2 w-full" action="">
